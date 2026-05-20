@@ -1,19 +1,17 @@
 version: '3.8'
 
 services:
-  # 1. Cấu hình cho ứng dụng Web ASP.NET Core
-  web-app:
-    image: thanhvippro/myaspnetapp:latest # Thay 'thanhvippro' bằng tên Docker Hub của bạn
+  webapp:
+    image: thanhvippro/myaspnetapp:latest
     container_name: my-web-app
     ports:
-      - "8080:8080" # Mở cổng 8080 kết nối vào ứng dụng
+      - "8080:8080"
     restart: always
 
-  # 2. Cấu hình cho Watchtower (Tự động quét và kéo bản mới về chạy)
   watchtower:
     image: containrrr/watchtower
-    container_name: watchtower
+    container_name: watchtower_democicd
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock # Cấp quyền quản lý Docker engine cho Watchtower
-    command: --interval 30 # Cứ mỗi 30 giây lên Docker Hub kiểm tra và pull bản mới (nếu có)
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --cleanup --interval 30 
     restart: always
