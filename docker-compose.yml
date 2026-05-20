@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # 1. Cấu hình cho ứng dụng Web ASP.NET Core
   web-app:
-    image: thanhvippro/my-aspnet-app:latest # Thay 'thanhvippro' bằng tên Docker Hub của bạn
+    image: thanhvippro/myaspnetapp:latest # Thay 'thanhvippro' bằng tên Docker Hub của bạn
     container_name: my-web-app
     ports:
       - "8080:8080" # Mở cổng 8080 kết nối vào ứng dụng
